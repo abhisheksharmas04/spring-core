@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+  <!--  <bean id="per" class="com.ab.beans.Persons">
+   		<property name="pid" value="1001"></property>
+   		<property name="pname" value="Raja"></property>
+   		In setter injection we can involve our number of choice properties
+   </bean> -->
+   
+   <bean id="per" class="com.ab.beans.Persons1">
+   	<constructor-arg name="pid" value="2001"></constructor-arg>
+   	<constructor-arg name="pname" value="Suresh"></constructor-arg>
+   	<constructor-arg name="paddress" value="Delhi"></constructor-arg>
+   	<constructor-arg name="income" value="548595"></constructor-arg>
+   </bean>
+
+</beans>
