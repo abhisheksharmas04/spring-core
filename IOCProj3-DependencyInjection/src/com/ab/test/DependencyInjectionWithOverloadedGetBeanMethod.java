@@ -1,24 +1,24 @@
 package com.ab.test;
 
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 import com.ab.beans.Persons;
-import com.ab.beans.Persons1;
 
 public class DependencyInjectionWithOverloadedGetBeanMethod {
 
 	public static void main(String[] args) {
 		// Create IOC Container
-		XmlBeanFactory facotry = new XmlBeanFactory(new FileSystemResource("src/com/ab/cfgs/applicationContext.xml"));
+		DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+		// Created Empty IOC container without having spring configurations
+
+		XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+		// By default SRC folder are there in CLASSPATH in every eclipse project
+		reader.loadBeanDefinitions("com/ab/cfgs/applicationContext.xml");
+		// This will give xml file to factory.
 		
-		//get spring bean class object
-		/*Persons person = (Persons)facotry.getBean("per");
-		System.out.println(person);*/
-		
-		// Using constructor Injection
-		Persons1 person = (Persons1) facotry.getBean("per");
-		System.out.println(person);
+		Persons per = factory.getBean("per", Persons.class);
+		System.out.println(per);
 
 	}
 
